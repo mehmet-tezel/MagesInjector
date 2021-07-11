@@ -176,7 +176,8 @@ static bool inject() {
 		std::cout << "Error 4" << std::endl;
 		return 0;
 	}
-
+	
+	return true;
 	//MessageBoxA(NULL, "DLL is Activated!", exeName.c_str(), MB_OK | MB_ICONINFORMATION);
 }
 
