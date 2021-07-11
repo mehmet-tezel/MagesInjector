@@ -11,5 +11,5 @@
 
 Credits:
 
-<a href="http://www.freepik.com">Designed by upklyak / Freepik</a> // Exe icon
+<a href="https://www.freepik.com/free-vector/realistic-electric-ball_6538007.htm">Designed by upklyak / Freepik</a> // Exe icon
 https://git.epicsparrow.com/epicsparrow/imgui/commit/46a96af3df414dac429f00968538b76f15909011 // Wrapper 
