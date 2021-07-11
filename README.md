@@ -1,5 +1,5 @@
 # MagesInjector
-**WIN32 DLL INJECTOR
+**WIN32 DLL INJECTOR**
 
 *An open source dll injector. You can use it as you want. If you are going to edit and present the program in a new way, please provide references.*
 
