@@ -10,14 +10,15 @@ static D3DPRESENT_PARAMETERS    g_d3dpp = {};
 bool CreateDeviceD3D(HWND hWnd);
 void CleanupDeviceD3D();
 void ResetDevice();
+
 LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 HICON hWindowIcon = NULL;
 
 // Main code
 //int main(int argc, char** argv)
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
-{
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
+    
     hWindowIcon = LoadIcon(GetModuleHandle(NULL), (LPCSTR)IDI_ICON1);
 
     WNDCLASSEX wc = { sizeof(WNDCLASSEX), CS_CLASSDC, WndProc, 0L, 0L, GetModuleHandle(NULL), hWindowIcon, NULL, NULL, NULL, _T("D11 1NJ3CT0R"), NULL };
@@ -51,9 +52,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     bool mainWindow = true;
 
     listProcess();
-
+    
     int selectedItem = 0;
-
     std::string* searchProcess = new std::string[200];
 
     bool done = false;
@@ -136,25 +136,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                 }
 
                 ImGui::PushItemWidth(340);
-                if (ImGui::InputText("", searchProcess))
-                {
+                if (ImGui::InputText("", searchProcess)) {
                     processName = storeProcessName;
                     processName = search(searchProcess[0], processName);
                 }
-
-                /*
-                if (searchProcess->empty())
-                {
-                    processName = storeProcessName;
-                }
-                */
 
                 ImGui::SameLine();
                 refreshButton = ImGui::Button("Refresh");
 
                 ImGui::PushItemWidth(405);
-                if (ImGui::ListBox("", &selectedItem, processName))
-                {
+                if (ImGui::ListBox("", &selectedItem, processName)) {
                     exeName = processName[selectedItem];
                     getProcId(hwnd);
                 }
@@ -175,12 +166,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         g_pd3dDevice->SetRenderState(D3DRS_SCISSORTESTENABLE, FALSE);
         D3DCOLOR clear_col_dx = D3DCOLOR_RGBA((int)(clear_color.x * clear_color.w * 255.0f), (int)(clear_color.y * clear_color.w * 255.0f), (int)(clear_color.z * clear_color.w * 255.0f), (int)(clear_color.w * 255.0f));
         g_pd3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, clear_col_dx, 1.0f, 0);
+        
         if (g_pd3dDevice->BeginScene() >= 0)
         {
             ImGui::Render();
             ImGui_ImplDX9_RenderDrawData(ImGui::GetDrawData());
             g_pd3dDevice->EndScene();
         }
+        
         HRESULT result = g_pd3dDevice->Present(NULL, NULL, NULL, NULL);
 
         if (result == D3DERR_DEVICELOST && g_pd3dDevice->TestCooperativeLevel() == D3DERR_DEVICENOTRESET)
