@@ -92,12 +92,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             ImGui::Text("Load DLL");
 
             ImGui::PushItemWidth(380);
-            ImGui::InputText("###1", &dllPath[0], sizeof(dllPath), ImGuiInputTextFlags_ReadOnly);
+            ImGui::InputText("##1", &dllPath, ImGuiInputTextFlags_ReadOnly);
             ImGui::SameLine();
             dllButton = ImGui::Button("X##1"); // dllButton, opens operating system's file choose menu
 
             ImGui::Text("Choose Running Application (.exe)");
-            ImGui::InputText("", &exePath[0], sizeof(exePath), ImGuiInputTextFlags_ReadOnly);
+            ImGui::InputText("##2", &exePath, ImGuiInputTextFlags_ReadOnly);
             ImGui::SameLine();
             exeButton = ImGui::Button("X##2"); // exeButton, opens operating system's file choose menu
 
